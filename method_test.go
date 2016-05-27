@@ -94,6 +94,34 @@ func TestMethod(t *testing.T) {
 		})
 	})
 
+	Convey("Given PATCH matcher", t, func() {
+		var handlerCalled bool
+		mockHandler := func(resp http.ResponseWriter, req *http.Request) {
+			handlerCalled = true
+		}
+		matcher := routing.PATCHFunc(mockHandler)
+
+		Convey("When PATCH request is matched", func() {
+			request, _ := http.NewRequest("PATCH", "/match", nil)
+			recorder := httptest.NewRecorder()
+
+			result := matcher("", recorder, request)
+
+			So(result, ShouldBeTrue)
+			So(handlerCalled, ShouldBeTrue)
+		})
+
+		Convey("When non-PATCH request is matched", func() {
+			request, _ := http.NewRequest("GET", "/match", nil)
+			recorder := httptest.NewRecorder()
+
+			result := matcher("", recorder, request)
+
+			So(result, ShouldBeFalse)
+			So(handlerCalled, ShouldBeFalse)
+		})
+	})
+
 	Convey("Given DELETE metcher", t, func() {
 		var handlerCalled bool
 		mockHandler := func(resp http.ResponseWriter, req *http.Request) {

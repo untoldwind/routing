@@ -36,6 +36,14 @@ func PUTFunc(handler func(http.ResponseWriter, *http.Request)) Matcher {
 	return PUT(http.HandlerFunc(handler))
 }
 
+func PATCH(handler http.Handler) Matcher {
+	return Method("PATCH", handler)
+}
+
+func PATCHFunc(handler func(http.ResponseWriter, *http.Request)) Matcher {
+	return PATCH(http.HandlerFunc(handler))
+}
+
 func DELETE(handler http.Handler) Matcher {
 	return Method("DELETE", handler)
 }
