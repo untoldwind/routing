@@ -1,10 +1,12 @@
-package routing
+package routing_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+	"github.com/untoldwind/routing"
 )
 
 func TestMethod(t *testing.T) {
@@ -13,7 +15,7 @@ func TestMethod(t *testing.T) {
 		mockHandler := func(resp http.ResponseWriter, req *http.Request) {
 			handlerCalled = true
 		}
-		matcher := GETFunc(mockHandler)
+		matcher := routing.GETFunc(mockHandler)
 
 		Convey("When GET request is matched", func() {
 			request, _ := http.NewRequest("GET", "/match", nil)
@@ -41,7 +43,7 @@ func TestMethod(t *testing.T) {
 		mockHandler := func(resp http.ResponseWriter, req *http.Request) {
 			handlerCalled = true
 		}
-		matcher := POSTFunc(mockHandler)
+		matcher := routing.POSTFunc(mockHandler)
 
 		Convey("When POST request is matched", func() {
 			request, _ := http.NewRequest("POST", "/match", nil)
@@ -69,7 +71,7 @@ func TestMethod(t *testing.T) {
 		mockHandler := func(resp http.ResponseWriter, req *http.Request) {
 			handlerCalled = true
 		}
-		matcher := PUTFunc(mockHandler)
+		matcher := routing.PUTFunc(mockHandler)
 
 		Convey("When PUT request is matched", func() {
 			request, _ := http.NewRequest("PUT", "/match", nil)
@@ -97,7 +99,7 @@ func TestMethod(t *testing.T) {
 		mockHandler := func(resp http.ResponseWriter, req *http.Request) {
 			handlerCalled = true
 		}
-		matcher := DELETEFunc(mockHandler)
+		matcher := routing.DELETEFunc(mockHandler)
 
 		Convey("When DELETE request is matched", func() {
 			request, _ := http.NewRequest("DELETE", "/match", nil)

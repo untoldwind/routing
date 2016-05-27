@@ -1,10 +1,12 @@
-package routing
+package routing_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+	"github.com/untoldwind/routing"
 )
 
 func TestEnd(t *testing.T) {
@@ -18,7 +20,7 @@ func TestEnd(t *testing.T) {
 			subMatcherCalled = true
 			return subMatcherMatches
 		}
-		matcher := End(subMatcher)
+		matcher := routing.End(subMatcher)
 
 		Convey("And sub-matcher always matches", func() {
 			subMatcherMatches = true

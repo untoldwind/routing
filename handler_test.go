@@ -1,10 +1,12 @@
-package routing
+package routing_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+	"github.com/untoldwind/routing"
 )
 
 func TestHandler(t *testing.T) {
@@ -13,7 +15,7 @@ func TestHandler(t *testing.T) {
 			return req.URL.Path == "/matches"
 		}
 
-		handler := RouteHandlerFunc(matcher)
+		handler := routing.RouteHandlerFunc(matcher)
 
 		Convey("When a http request matches", func() {
 			request, _ := http.NewRequest("GET", "/matches", nil)

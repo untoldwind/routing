@@ -1,10 +1,12 @@
-package routing
+package routing_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+	"github.com/untoldwind/routing"
 )
 
 func TestSequence(t *testing.T) {
@@ -28,7 +30,7 @@ func TestSequence(t *testing.T) {
 			return matcher3Matches
 		}
 
-		matcher := Sequence(matcher1, matcher2, matcher3)
+		matcher := routing.Sequence(matcher1, matcher2, matcher3)
 
 		request, _ := http.NewRequest("GET", "/something", nil)
 		recorder := httptest.NewRecorder()

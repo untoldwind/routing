@@ -1,10 +1,12 @@
-package routing
+package routing_test
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+	"github.com/untoldwind/routing"
 )
 
 func TestIntPart(t *testing.T) {
@@ -20,7 +22,7 @@ func TestIntPart(t *testing.T) {
 		}
 
 		var extractedPart int
-		matcher := IntPart(func(part int) Matcher {
+		matcher := routing.IntPart(func(part int) routing.Matcher {
 			extractedPart = part
 			return subMatcher
 		})

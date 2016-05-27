@@ -1,0 +1,49 @@
+{
+	"ImportPath": "github.com/untoldwind/routing",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v70",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/gopherjs/gopherjs/js",
+			"Comment": "go1.5-22-ge35c96a",
+			"Rev": "e35c96a025f1a3095703a999c16cc8e596a4428e"
+		},
+		{
+			"ImportPath": "github.com/jtolds/gls",
+			"Rev": "8ddce2a84170772b95dd5d576c48d517b22cac63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions",
+			"Comment": "1.6.0",
+			"Rev": "e9a2f6771d97c709b2f7609fdf89ebde8b64c926"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/go-render/render",
+			"Comment": "1.6.0",
+			"Rev": "e9a2f6771d97c709b2f7609fdf89ebde8b64c926"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/oglematchers",
+			"Comment": "1.6.0",
+			"Rev": "e9a2f6771d97c709b2f7609fdf89ebde8b64c926"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.6.1-2-g99f2b1e",
+			"Rev": "99f2b1e01343c8bc2d9d12f1194d2d68ce18b063"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/gotest",
+			"Comment": "1.6.1-2-g99f2b1e",
+			"Rev": "99f2b1e01343c8bc2d9d12f1194d2d68ce18b063"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
+			"Comment": "1.6.1-2-g99f2b1e",
+			"Rev": "99f2b1e01343c8bc2d9d12f1194d2d68ce18b063"
+		}
+	]
+}
