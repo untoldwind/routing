@@ -14,7 +14,7 @@ format:
 test: export GOPATH=${PWD}/../../../..
 test:
 	@echo "--> Running tests"
-	@go test -v .
+	@go test -v . ./rest/...
 
 godepssave:
 	@echo "--> Godeps save"

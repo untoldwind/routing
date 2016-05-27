@@ -12,5 +12,8 @@ func Prefix(prefix string, subMatcher Matcher) Matcher {
 }
 
 func PrefixSeq(prefix string, subMatchers ...Matcher) Matcher {
+	if prefix == "" {
+		return Sequence(subMatchers...)
+	}
 	return Prefix(prefix, Sequence(subMatchers...))
 }
