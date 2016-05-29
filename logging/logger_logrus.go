@@ -1,13 +1,14 @@
 package logging
 
 import (
-	"github.com/Sirupsen/logrus"
-	"github.com/Sirupsen/logrus/formatters/logstash"
-	"github.com/codegangsta/cli"
-	"github.com/go-errors/errors"
 	"os"
 	"path"
 	"syscall"
+
+	"github.com/Sirupsen/logrus"
+	"github.com/Sirupsen/logrus/formatters/logstash"
+	"github.com/go-errors/errors"
+	"gopkg.in/codegangsta/cli.v2"
 )
 
 type logrusLogger struct {
@@ -16,7 +17,7 @@ type logrusLogger struct {
 }
 
 func NewLogrusLogger(ctx *cli.Context) Logger {
-	logFile := ctx.GlobalString("log-file")
+	logFile := ctx.String("log-file")
 	if logFile != "" {
 		if err := os.MkdirAll(path.Dir(logFile), 0755); err != nil {
 			logrus.Errorf("Failed to create path %s: %s", path.Dir(logFile), err.Error())
@@ -29,7 +30,7 @@ func NewLogrusLogger(ctx *cli.Context) Logger {
 			}
 		}
 	}
-	switch ctx.GlobalString("log-format") {
+	switch ctx.String("log-format") {
 	case "json":
 		logrus.SetFormatter(&logrus.JSONFormatter{})
 	case "logstash":
@@ -37,7 +38,7 @@ func NewLogrusLogger(ctx *cli.Context) Logger {
 	default:
 		logrus.SetFormatter(&logrus.TextFormatter{})
 	}
-	if ctx.GlobalBool("debug") {
+	if ctx.Bool("debug") {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
 
